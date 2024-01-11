@@ -2,24 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
-{
-    [SerializeField] GameObject pickupPrefab = null;
+public class Pickup : MonoBehaviour {
+	[SerializeField] GameObject pickupPrefab = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	private void OnTriggerEnter(Collider other) {
-        Destroy(gameObject);
-        Instantiate(pickupPrefab, transform.position, Quaternion.identity);
+		if (other.TryGetComponent(out Player player)) {
+			player.AddPoints(10);
+			Instantiate(pickupPrefab, transform.position, Quaternion.identity);
+
+			Destroy(gameObject);
+		}
+
 	}
 }

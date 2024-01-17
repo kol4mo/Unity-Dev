@@ -1033,9 +1033,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleUI: {fileID: 1834910115}
+  livesUI: {fileID: 129957303}
+  TimerUI: {fileID: 457982138}
   state: 0
   timer: 0
-  lives: 0
 --- !u!4 &723908897
 Transform:
   m_ObjectHideFlags: 0

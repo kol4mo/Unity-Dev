@@ -6,17 +6,37 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 	[SerializeField] TMP_Text score_Text;
+	[SerializeField] FloatVariable health;
+	[SerializeField] PhysicsCharacterController characterController;
+	[Header("Events")]
+	[SerializeField] IntEvent scoreEvent;
+	[SerializeField] VoidEvent StartGameEvent;
 
+	private void Start() {
+		health.value = 5.5f;
+		characterController.enabled = false;
+	}
 
-	private int score = 0;
-	[SerializeField] private float Health = 100;
+	private void OnEnable() {
+		StartGameEvent.Subscribe(OnStartGame);
+	}
+
+	[SerializeField]private IntVariable score;
 	
 	public int Score { 
-		get { return score; } 
-		private set { score = value; score_Text.text = "Score: " + score; } }
+		get { return score.value; } 
+		private set { score.value = value; 
+			score_Text.text = "Score: " + score; 
+			scoreEvent.RaiseEvent(score.value); 
+		} 
+	}
 
 	public void AddPoints(int points) {
 		Score += points;
+	}
+
+	private void OnStartGame() {
+		characterController.enabled = true;
 	}
 
 }

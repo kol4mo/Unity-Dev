@@ -17,7 +17,12 @@ public class PhysicsCharacterController : MonoBehaviour {
     Rigidbody rb;
     Vector3 force = Vector3.zero;
 
-    void Start() {
+	public void Reset() {
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+	}
+
+	void Start() {
         rb = GetComponent<Rigidbody>();
     }
 

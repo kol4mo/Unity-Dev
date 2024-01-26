@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,5 +10,13 @@ public class IntEvent : ScriptableObjectBase {
 	public void RaiseEvent(int value) {
 		onEventRaised?.Invoke(value);
 
+	}
+
+	public void Subscribe(UnityAction<int> function) {
+		onEventRaised += function;
+	}
+
+	public void Unsubscribe(UnityAction<int> function) {
+		onEventRaised -= function;
 	}
 }

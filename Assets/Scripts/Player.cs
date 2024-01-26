@@ -11,7 +11,13 @@ public class Player : MonoBehaviour {
 	[Header("Events")]
 	[SerializeField] IntEvent scoreEvent;
 	[SerializeField] VoidEvent StartGameEvent;
+	[SerializeField] VoidEvent playerDeadEvent;
 
+	public void OnRespawn(GameObject respawn) {
+		transform.position = respawn.transform.position;
+		transform.rotation = respawn.transform.rotation;
+		characterController.Reset();
+	}
 	private void Start() {
 		health.value = 5.5f;
 		characterController.enabled = false;
@@ -26,7 +32,7 @@ public class Player : MonoBehaviour {
 	public int Score { 
 		get { return score.value; } 
 		private set { score.value = value; 
-			score_Text.text = "Score: " + score; 
+			score_Text.text = "Score: " + score.value; 
 			scoreEvent.RaiseEvent(score.value); 
 		} 
 	}
@@ -39,4 +45,10 @@ public class Player : MonoBehaviour {
 		characterController.enabled = true;
 	}
 
+	public void Damage(float damage) {
+		health.value -= damage;
+		if (health.value <= 0) {
+			playerDeadEvent.RaiseEvent();
+		}
+	}
 }

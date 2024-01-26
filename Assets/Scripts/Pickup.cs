@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 	[SerializeField] GameObject pickupPrefab = null;
+	[SerializeField] int points = 10;
 
 
 	private void OnTriggerEnter(Collider other) {
 		if (other.TryGetComponent(out Player player)) {
-			player.AddPoints(10);
+			player.AddPoints(points);
 			Instantiate(pickupPrefab, transform.position, Quaternion.identity);
 
 			Destroy(gameObject);

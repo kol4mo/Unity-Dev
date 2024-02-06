@@ -16,7 +16,7 @@ MonoBehaviour:
   lifetime: 4
   damage: 20
   destroyOnImpact: 0
-  impactPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
+  impactPrefab: {fileID: 1808098553887724, guid: 0f958b237ff34dc41854495e16602a70, type: 3}
   force: 25
   forceMode: 2
   damageOverTime: 0

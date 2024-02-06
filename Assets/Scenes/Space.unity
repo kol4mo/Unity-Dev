@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cb01f2269ff4d4dbb6024aaad53c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  action: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 5488c22fdf8201346a341378810c0e75, type: 2}
   animator: {fileID: 0}
   ammoTransform: {fileID: 2044940507}
@@ -441,7 +442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f6a20940dad6b4f9eaa6c24f8464e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  action: {fileID: 0}
   inventory: {fileID: 177699806}
+  health: 100
 --- !u!1001 &186459216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -586,7 +589,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1020409335811022, guid: d5a6d7c2811ecba41be9ea2f957da0d6, type: 3}
       propertyPath: m_Name
-      value: SM_Env_Asteroid_Rock_03
+      value: Asteroid Rock
       objectReference: {fileID: 0}
     - target: {fileID: 4015516187493062, guid: d5a6d7c2811ecba41be9ea2f957da0d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -637,6 +640,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1020409335811022, guid: d5a6d7c2811ecba41be9ea2f957da0d6, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 628953753}
+    - targetCorrespondingSourceObject: {fileID: 1020409335811022, guid: d5a6d7c2811ecba41be9ea2f957da0d6, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 628953752}
+    - targetCorrespondingSourceObject: {fileID: 1020409335811022, guid: d5a6d7c2811ecba41be9ea2f957da0d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 628953748}
   m_SourcePrefab: {fileID: 100100000, guid: d5a6d7c2811ecba41be9ea2f957da0d6, type: 3}
@@ -666,6 +675,34 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.601624
   m_Center: {x: -2.220446e-16, y: -0.0000075101852, z: 0.00000059604656}
+--- !u!114 &628953752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628953747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0491e0a0e17ffad45a139668e92622fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  hitPrefab: {fileID: 0}
+  destroyPrefab: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
+--- !u!114 &628953753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628953747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4041786c54b56d4e985ef06bd51929b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: 
 --- !u!1 &1056795014
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IDamagable {
 
 	[SerializeField] TMP_Text score_Text;
 	[SerializeField] FloatVariable health;
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
 		characterController.enabled = true;
 	}
 
-	public void Damage(float damage) {
+	public void ApplyDamage(float damage) {
 		health.value -= damage;
 		if (health.value <= 0) {
 			playerDeadEvent.RaiseEvent();

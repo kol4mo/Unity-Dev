@@ -9,10 +9,10 @@ public class PathFollower : MonoBehaviour {
     [SerializeField] SplineContainer spline;
     [SerializeField][Range(0, 40)] public float speed = 1;
 
-    float tdistance = 0;
+	[Range(0, 1)] public float tdistance = 0; // distance along spline (0-1)
 
-    //public float speed { get; set; }
-    public float length { get { return spline.CalculateLength(); } }
+	//public float speed { get; set; }
+	public float length { get { return spline.CalculateLength(); } }
     public float distance {
         get { return tdistance * length; }
         set {tdistance = value / length; }

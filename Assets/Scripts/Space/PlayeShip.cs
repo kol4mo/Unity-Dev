@@ -3,25 +3,21 @@ using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
 
-public class PlayeShip : Interactable {
+public class PlayeShip : MonoBehaviour, IDamagable {
 	[SerializeField] Action action;
+	[SerializeField] private IntEvent ScoreEvent;
 	[SerializeField] private Inventory inventory;
-	public float health = 100;
+	[SerializeField] private IntVariable score;
 
-	public override void OnInteractActive(GameObject gameObject) {
-	}
 
-	public override void OnInteractEnd(GameObject gameObject) {
-	}
+	[SerializeField] protected GameObject hitPrefab;
+	[SerializeField] protected GameObject destroyPrefab;
+	public float Health = 100;
 
-	public override void OnInteractStart(GameObject gameObject) {
-	}
 
 	private void Start() {
-		if (action != null) {
-			action.onEnter += OnInteractStart;
-			action.onStay += OnInteractActive;
-		}
+		ScoreEvent.Subscribe(AddPoint);
+
 	}
 
 	private void Update() {
@@ -30,6 +26,25 @@ public class PlayeShip : Interactable {
 		}
 		if (Input.GetButtonUp("Fire1")) {
 			inventory.StopUse();
+		}
+	}
+
+	public void AddPoint(int points) {
+		score.value += points;
+		Debug.Log(score.value);
+	}
+
+	public void ApplyDamage(float damage) {
+		Health -= damage;
+		if (Health < 0) {
+			if (destroyPrefab != null) {
+				Instantiate(destroyPrefab, gameObject.transform.position, Quaternion.identity);
+			}
+			Destroy(gameObject);
+		} else {
+			if (hitPrefab != null) {
+				Instantiate(hitPrefab, gameObject.transform.position, Quaternion.identity);
+			}
 		}
 	}
 }

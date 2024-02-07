@@ -11,9 +11,9 @@ TagManager:
   - player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemy
+  - PlayerWeapon
+  - EnemyWeapon
   - 
   - 
   - 

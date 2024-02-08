@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour {
+public class Pickupex : MonoBehaviour {
 	[SerializeField] GameObject pickupPrefab = null;
 	[SerializeField] int points = 10;
 
